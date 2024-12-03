@@ -1,0 +1,19 @@
+name: Time Trigger
+
+on:
+  schedule:
+    # 每两周的周一早上8点执行
+    - cron: '0 8 * * 1 [ $(($(date +\%U) \% 2)) -eq 0 ]'
+  workflow_dispatch:  # 允许手动触发工作流
+
+jobs:
+  trigger_build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Trigger build.yaml workflow
+        uses: peter-evans/workflow-dispatch@v1
+        with:
+          repository: ${{ github.repository }}  # 使用当前仓库
+          workflow: build.yaml  # 目标工作流文件
+          ref: ${{ github.ref }}  # 使用当前分支或tag
