@@ -3,7 +3,7 @@ name: Time Trigger
 on:
   schedule:
     # 每两周的周一早上8点执行
-    - cron: '0 8 * * 1 [ $(($(date +\%U) \% 2)) -eq 0 ]'
+    - cron: '0 8 */14 * *'
   workflow_dispatch:  # 允许手动触发工作流
 
 jobs:
