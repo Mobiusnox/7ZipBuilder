@@ -60,4 +60,4 @@ Copy-Item -Destination "$packDir\7z.sfx" -Path "$buildDir\C\Util\7zipInstall\x64
 Copy-Item -Destination "$packDir\7zCon.sfx" -Path "$buildDir\C\Util\7zipInstall\x64\7zipInstall.exe"
 
 # 打包
-& "$packDir\7z.exe" a -sfx -t7z -mx=9 -m0=LZMA -r "$workDir\$buildVersion.exe" "$outDir\*"
+& "$packDir\7z.exe" a  -tzip -mx=4 -m0=LZMA -r "$workDir\$buildVersion.zip" "$outDir\*"
